@@ -11,7 +11,7 @@ for (let round = 0; round < 3; round += 1) {
   const correctAnswer = (number % 2 === 0) ? 'yes' : 'no';
 
   console.log(`Question: ${number}`);
-  const answer = readlineSync.question('Your answer: '); 
+  const answer = readlineSync.question('Your answer: ');
 
   if (correctAnswer === answer) {
     console.log('Correct!');
