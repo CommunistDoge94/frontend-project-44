@@ -1,3 +1,4 @@
 node_modules/
 brain-games-test.cast
 brain-calc-test.cast
+brain-gcd-test.cast
