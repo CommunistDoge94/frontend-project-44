@@ -1,44 +1,47 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import askName from '../src/cli.js';
+import { gameStopWarning, finishGame, correctAnswerMessage } from '../src/index.js';
+import { askName, askQuestion } from '../src/cli.js';
 
-const arithmetics = ['+', '-', '*'];
+function brainCalc() {
+  const userName = askName();
 
-const userName = askName();
-console.log('What is the result of the expression?');
+  console.log('What is the result of the expression?');
 
-for (let round = 0; round < 3; round += 1) {
-  const number1 = Math.floor(Math.random() * (30 - 2 + 1)) + 2; // Диапазон от 2 до 30.
-  const number2 = Math.floor(Math.random() * (15 - 2 + 1)) + 2; // Диапозон от 2 до 15.
-  const sign = arithmetics[Math.floor(Math.random() * 3)];
-  const expression = `${number1} ${sign} ${number2}`;
+  for (let round = 0; round < 3; round += 1) {
+    const number1 = Math.floor(Math.random() * (30 - 2 + 1)) + 2; // Диапазон от 2 до 30.
+    const number2 = Math.floor(Math.random() * (15 - 2 + 1)) + 2; // Диапозон от 2 до 15.
+    const arithmetics = ['+', '-', '*'];
+    const sign = arithmetics[Math.floor(Math.random() * 3)];
+    const expression = `${number1} ${sign} ${number2}`;
 
-  let correctAnswer;
-  switch (sign) {
-    case '+':
-      correctAnswer = number1 + number2;
-      break;
-    case '-':
-      correctAnswer = number1 - number2;
-      break;
-    case '*':
-      correctAnswer = number1 * number2;
-      break;
-    default:
-      console.log('Your OS will be removed in 5 seconds.');
-      break;
-  }
-
-  console.log(`Question: ${expression}`);
-  const userAnswer = Number(readlineSync.question('Your answer: '));
-
-  if (correctAnswer === userAnswer) {
-    console.log('Correct!');
-    if (round === 2) {
-      console.log(`Congratulations, ${userName}!`);
+    let correctAnswer;
+    switch (sign) {
+      case '+':
+        correctAnswer = String(number1 + number2);
+        break;
+      case '-':
+        correctAnswer = String(number1 - number2);
+        break;
+      case '*':
+        correctAnswer = String(number1 * number2);
+        break;
+      default:
+        console.log('Your OS will be removed in 5 seconds.');
+        break;
     }
-  } else {
-    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`);
-    break;
+
+    const userAnswer = String(askQuestion(expression));
+
+    if (userAnswer !== correctAnswer) {
+      gameStopWarning(userAnswer, correctAnswer, userName);
+      break;
+    }
+    correctAnswerMessage();
+
+    if (round === 2) {
+      finishGame(userName);
+    }
   }
 }
+
+brainCalc();

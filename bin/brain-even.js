@@ -1,24 +1,28 @@
 #!/usr/bin/env node
-import readlineSync from 'readline-sync';
-import askName from '../src/cli.js';
+import { gameStopWarning, finishGame, correctAnswerMessage } from '../src/index.js';
+import { askName, askQuestion } from '../src/cli.js';
 
-const userName = askName();
-console.log('Answer "yes" if the number is even, otherwise answer "no".');
+function brainEven() {
+  const userName = askName();
 
-for (let round = 0; round < 3; round += 1) {
-  const number = Math.floor(Math.random() * 98) + 2; // Диапазон от 2 до 99.
-  const correctAnswer = (number % 2 === 0) ? 'yes' : 'no';
+  console.log('Answer "yes" if the number is even, otherwise answer "no".');
 
-  console.log(`Question: ${number}`);
-  const answer = readlineSync.question('Your answer: ');
+  for (let round = 0; round < 3; round += 1) {
+    const number = Math.floor(Math.random() * 98) + 2; // Диапазон от 2 до 99.
+    const correctAnswer = (number % 2 === 0) ? 'yes' : 'no';
 
-  if (correctAnswer === answer) {
-    console.log('Correct!');
-    if (round === 2) {
-      console.log(`Congratulations, ${userName}!`);
+    const userAnswer = askQuestion(number);
+
+    if (userAnswer !== correctAnswer) {
+      gameStopWarning(userAnswer, correctAnswer, userName);
+      break;
     }
-  } else {
-    console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`);
-    break;
+    correctAnswerMessage();
+
+    if (round === 2) {
+      finishGame(userName);
+    }
   }
 }
+
+brainEven();
