@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import { gameStopWarning, finishGame, correctAnswerMessage } from '../src/index.js';
-import { askName, askQuestion } from '../src/cli.js';
+import { gameStopWarning, finishGame, correctAnswerMessage } from '../../src/index.js';
+import { askName, askQuestion } from '../../src/cli.js';
 
 function brainProgression() {
   const userName = askName();
