@@ -1,7 +1,7 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/CommunistDoge94/frontend-project-44/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/CommunistDoge94/frontend-project-44/actions)",
+  "description": "Учебный проект по JavaScript, который представляет собой сборник математических игр.",
   "main": "index.js",
   "bin": {
     "brain-games": "bin/games/brain-games.js",
