@@ -1,15 +1,26 @@
 #!/usr/bin/env node
+import { greetUser, askQuestion } from './cli.js';
 
-function gameStopWarning(userAnswer, correctAnswer, userName) {
-  console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`);
+function startGame(gameDescription, generateQuestion) {
+  const userName = greetUser();
+  const roundCount = 3;
+  console.log(gameDescription);
+
+  for (let round = 0; round < roundCount; round += 1) {
+    const [question, correctAnswer] = generateQuestion();
+    const userAnswer = askQuestion(question);
+
+    if (userAnswer === correctAnswer) {
+      console.log('Correct!');
+      if (round === 2) {
+        console.log(`Congratulations, ${userName}!`);
+      }
+    } else {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      break;
+    }
+  }
 }
 
-function correctAnswerMessage() {
-  console.log('Correct!');
-}
-
-function finishGame(userName) {
-  console.log(`Congratulations, ${userName}!`);
-}
-
-export { gameStopWarning, finishGame, correctAnswerMessage };
+export default startGame;
