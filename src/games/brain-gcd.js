@@ -18,7 +18,7 @@ function findGcd(num1, num2) {
     }
   }
   return 1;
-};
+}
 
 function generateQuestion() {
   const number1 = Math.floor(Math.random() * (30 - 2 + 1)) + 2; // Диапазон от 2 до 30.
