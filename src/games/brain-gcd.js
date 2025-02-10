@@ -1,6 +1,6 @@
 import startGame from '../index.js';
 
-const findGcd = (num1, num2) => {
+function findGcd(num1, num2) {
   let lesserNum;
   let biggerNum;
 
