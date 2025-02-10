@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 import { greetUser, askQuestion } from './cli.js';
 
 function startGame(gameDescription, generateQuestion) {
