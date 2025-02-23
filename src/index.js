@@ -13,6 +13,10 @@ const greetUser = () => {
   return userName;
 }
 
+const generateNumber = () => {
+  return Math.floor(Math.random() * (30 - 2 + 1)) + 2;
+}
+
 const startGame = (gameDescription, generateQuestion) => {
   const userName = greetUser();
   const roundCount = 3;
@@ -22,19 +26,17 @@ const startGame = (gameDescription, generateQuestion) => {
     const [question, correctAnswer] = generateQuestion();
     const userAnswer = askQuestion(question);
 
-    if (userAnswer === correctAnswer) {
-      if (userAnswer !== correctAnswer) {
-        console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-        console.log(`Let's try again, ${userName}!`);
-        break;
-      }
+    if (userAnswer !== correctAnswer) {
+      console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
+      console.log(`Let's try again, ${userName}!`);
+      break;
+    }
 
     console.log('Correct!');
     if (round === 3) {
       console.log(`Congratulations, ${userName}!`);
-  }
-    }
+    } 
   }
 }
 
-export default startGame;
+export { startGame, generateNumber };
