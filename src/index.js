@@ -4,18 +4,16 @@ const askQuestion = (question) => {
   console.log(`Question: ${question}`);
   const userAnswer = readlineSync.question('Your answer: ');
   return userAnswer;
-}
+};
 
 const greetUser = () => {
   console.log('Welcome to the Brain Games!');
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}!`);
   return userName;
-}
+};
 
-const generateNumber = () => {
-  return Math.floor(Math.random() * (30 - 2 + 1)) + 2;
-}
+const generateNumber = () => Math.floor(Math.random() * (30 - 2 + 1)) + 2;
 
 const startGame = (gameDescription, generateQuestion) => {
   const userName = greetUser();
@@ -35,8 +33,8 @@ const startGame = (gameDescription, generateQuestion) => {
     console.log('Correct!');
     if (round === 3) {
       console.log(`Congratulations, ${userName}!`);
-    } 
+    }
   }
-}
+};
 
 export { startGame, generateNumber };

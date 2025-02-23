@@ -1,20 +1,20 @@
-import startGame from '../index.js';
+import { startGame, generateNumber } from '../index.js';
 
-function isPrimeNumber(number) {
+const isPrimeNumber = (number) => {
   for (let divisor = number - 1; divisor > 1; divisor -= 1) {
     if (number % divisor === 0) {
-      return 'no';
+      return false;
     }
   }
-  return 'yes';
-}
+  return true;
+};
 
-function generateQuestion() {
-  const number = Math.floor((Math.random() * 98) + 2);
-  const correctAnswer = String(isPrimeNumber(number));
+const generateQuestion = () => {
+  const number = generateNumber();
+  const correctAnswer = isPrimeNumber(number) ? 'yes' : 'no';
   const question = number;
   return [question, correctAnswer];
-}
+};
 
 const gameDescription = 'Answer "yes" if given number is prime. Otherwise answer "no".';
 
