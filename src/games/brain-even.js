@@ -1,13 +1,13 @@
-import startGame from '../index.js';
+import { startGame, generateNumber } from '../index.js';
 
 function isEven(number) {
-  return (number % 2 === 0) ? 'yes' : 'no';
+  return (number % 2 === 0);
 }
 
 function generateQuestion() {
-  const number = Math.floor(Math.random() * 98) + 2; // Диапазон от 2 до 99.
+  const number = generateNumber();
   const question = number;
-  const correctAnswer = isEven(number);
+  const correctAnswer = isEven(number) ? 'yes' : 'no';
   return [question, correctAnswer];
 }
 
