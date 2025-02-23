@@ -1,6 +1,6 @@
 import startGame from '../index.js';
 
-function generateProgression() {
+const generateProgression = () => {
   const progression = [];
   const progressionLength = Math.floor(Math.random() * (12 - 8 + 1)) + 8;
   const numGap = Math.floor(Math.random() * 15 + 1);
@@ -15,12 +15,12 @@ function generateProgression() {
   const correctAnswer = String(progression[emptyPlace]);
   progression[emptyPlace] = '..';
   return [progression.join(' '), correctAnswer];
-}
+};
 
-function generateQuestion() {
+const generateQuestion = () => {
   const [question, correctAnswer] = generateProgression();
   return [question, correctAnswer];
-}
+};
 
 const gameDescription = 'What number is missing in the progression?';
 

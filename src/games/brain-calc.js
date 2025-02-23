@@ -1,6 +1,6 @@
 import { startGame, generateNumber } from '../index.js';
 
-function calculateAnswer(number1, number2, sign) {
+const calculateAnswer = (number1, number2, sign) => {
   let correctAnswer;
   switch (sign) {
     case '+':
@@ -16,9 +16,9 @@ function calculateAnswer(number1, number2, sign) {
       console.log('Your OS will be removed in 5 seconds.');
       return 0;
   }
-}
+};
 
-function generateQuestion() {
+const generateQuestion = () => {
   const number1 = generateNumber();
   const number2 = generateNumber();
   const arithmetics = ['+', '-', '*'];
@@ -26,7 +26,7 @@ function generateQuestion() {
   const question = `${number1} ${sign} ${number2}`;
   const correctAnswer = String(calculateAnswer(number1, number2, sign));
   return [question, correctAnswer];
-}
+};
 
 const gameDescription = 'What is the result of the expression?';
 
