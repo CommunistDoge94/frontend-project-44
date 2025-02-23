@@ -1,6 +1,6 @@
-import startGame from '../index.js';
+import { startGame, generateNumber } from '../index.js';
 
-function findGcd(num1, num2) {
+const findGcd = (num1, num2) => {
   let lesserNum;
   let biggerNum;
 
@@ -18,15 +18,15 @@ function findGcd(num1, num2) {
     }
   }
   return 1;
-}
+};
 
-function generateQuestion() {
-  const number1 = Math.floor(Math.random() * (30 - 2 + 1)) + 2; // Диапазон от 2 до 30.
-  const number2 = Math.floor(Math.random() * (15 - 2 + 1)) + 2; // Диапозон от 2 до 15.
+const generateQuestion = () => {
+  const number1 = generateNumber();
+  const number2 = generateNumber();
   const correctAnswer = String(findGcd(number1, number2));
   const question = [number1, number2].join(' ');
   return [question, correctAnswer];
-}
+};
 
 const gameDescription = 'Find the greatest common divisor of given numbers.';
 
