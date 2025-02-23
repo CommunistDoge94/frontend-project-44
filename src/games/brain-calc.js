@@ -1,17 +1,16 @@
-import startGame from '../index.js';
+import { startGame, generateNumber } from '../index.js';
 
-function calculateAnswer(expression) {
-  const [number1, sign, number2] = expression.split(' ');
+function calculateAnswer(number1, number2, sign) {
   let correctAnswer;
   switch (sign) {
     case '+':
-      correctAnswer = String(Number(number1) + Number(number2));
+      correctAnswer = (Number(number1) + Number(number2));
       return correctAnswer;
     case '-':
-      correctAnswer = String(number1 - number2);
+      correctAnswer = (number1 - number2);
       return correctAnswer;
     case '*':
-      correctAnswer = String(number1 * number2);
+      correctAnswer = (number1 * number2);
       return correctAnswer;
     default:
       console.log('Your OS will be removed in 5 seconds.');
@@ -20,12 +19,12 @@ function calculateAnswer(expression) {
 }
 
 function generateQuestion() {
-  const number1 = Math.floor(Math.random() * (30 - 2 + 1)) + 2; // Диапазон от 2 до 30.
-  const number2 = Math.floor(Math.random() * (15 - 2 + 1)) + 2; // Диапозон от 2 до 15.
+  const number1 = generateNumber();
+  const number2 = generateNumber();
   const arithmetics = ['+', '-', '*'];
-  const sign = arithmetics[Math.floor(Math.random() * 3)];
+  const sign = arithmetics[Math.floor(Math.random() * arithmetics.length)];
   const question = `${number1} ${sign} ${number2}`;
-  const correctAnswer = calculateAnswer(question);
+  const correctAnswer = String(calculateAnswer(number1, number2, sign));
   return [question, correctAnswer];
 }
 
