@@ -17,14 +17,14 @@ const generateQuestion = () => {
   const numGap = generateNumber();
   const startNum = generateNumber();
   const emptyPlace = generateNumber(progressionLength);
-  
+
   const progression = generateProgression(
     progressionLength,
     numGap,
     startNum,
     emptyPlace,
   );
-  
+
   const correctAnswer = String(progression[emptyPlace]);
   progression[emptyPlace] = '..';
 
