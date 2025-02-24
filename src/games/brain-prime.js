@@ -1,4 +1,5 @@
-import { startGame, generateNumber } from '../index.js';
+import startGame from '../index.js';
+import generateNumber from '../utils.js';
 
 const isPrimeNumber = (number) => {
   for (let divisor = number - 1; divisor > 1; divisor -= 1) {

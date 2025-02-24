@@ -1,4 +1,5 @@
-import { startGame, generateNumber } from '../index.js';
+import startGame from '../index.js';
+import generateNumber from '../utils.js';
 
 const calculateAnswer = (number1, number2, sign) => {
   let correctAnswer;

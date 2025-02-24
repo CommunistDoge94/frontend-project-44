@@ -13,8 +13,6 @@ const greetUser = () => {
   return userName;
 };
 
-const generateNumber = () => Math.floor(Math.random() * (30 - 2 + 1)) + 2;
-
 const startGame = (gameDescription, generateQuestion) => {
   const userName = greetUser();
   const roundCount = 3;
@@ -37,4 +35,4 @@ const startGame = (gameDescription, generateQuestion) => {
   }
 };
 
-export { startGame, generateNumber };
+export default startGame;

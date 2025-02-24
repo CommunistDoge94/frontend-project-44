@@ -1,4 +1,5 @@
-import { startGame, generateNumber } from '../index.js';
+import startGame from '../index.js';
+import generateNumber from '../utils.js';
 
 const findGcd = (num1, num2) => {
   let lesserNum;

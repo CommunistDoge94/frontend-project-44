@@ -1,4 +1,5 @@
-import { startGame, generateNumber } from '../index.js';
+import startGame from '../index.js';
+import generateNumber from '../utils.js';
 
 const generateProgression = (progressionLength, startNum, numGap, emptyPlace) => {
   const progression = [];
@@ -14,10 +15,10 @@ const generateProgression = (progressionLength, startNum, numGap, emptyPlace) =>
 };
 
 const generateQuestion = () => {
-  const progressionLength = Math.floor(Math.random() * (12 - 8 + 1)) + 8;
+  const progressionLength = generateNumber(12, 8);
   const numGap = generateNumber();
   const startNum = generateNumber();
-  const emptyPlace = Math.floor(Math.random() * progressionLength);
+  const emptyPlace = generateNumber(progressionLength);
   const [question, correctAnswer] = generateProgression(
     progressionLength,
     numGap,
